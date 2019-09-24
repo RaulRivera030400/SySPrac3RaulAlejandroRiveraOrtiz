@@ -1,0 +1,970 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Pr&aacute;ctica 3: Se&ntilde;ales continuas</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-09-24"><meta name="DC.source" content="P3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Pr&aacute;ctica 3: Se&ntilde;ales continuas</h1><!--introduction--><div><ul><li>Cruz Meneses Jorge Angel</li><li>Gonz&aacute;lez Jim&eacute;nez Daniel</li><li>Lazcano Saavedra Miguel Salom&oacute;n</li><li>Rivera Ortiz Ra&uacute;l Alejandro</li></ul></div><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Objetivos</a></li><li><a href="#2">Introducci&oacute;n</a></li><li><a href="#3">Desarrollo</a></li><li><a href="#4">Problema 1</a></li><li><a href="#5">Problema 2</a></li><li><a href="#6">Problema 3</a></li><li><a href="#7">Problema 4</a></li><li><a href="#16">Problema 5</a></li><li><a href="#27">Problema 6</a></li><li><a href="#34">Problema 7</a></li><li><a href="#35">Ap&eacute;ndice</a></li><li><a href="#36">Referencias</a></li></ul></div><h2 id="1">Objetivos</h2><div><ul><li>Manipulaci&oacute;n b&aacute;sica de MATLAB&reg;</li><li>Gr&aacute;ficas de se&ntilde;ales reales y complejas continuas</li><li>Transformaci&oacute;n de se&ntilde;ales continuas (escalamientos y traslaciones)</li><li>C&aacute;lculo de energ&iacute;a y potencia de se&ntilde;ales continuas</li></ul></div><h2 id="2">Introducci&oacute;n</h2><p>&iquest;Que es MATLAB&reg;?</p><p>Matlab es un "Software matem&aacute;tico con entorno de desarrollo integrado (IDE) que tiene un lenguaje de programaci&oacute;n propio (Lenguaje M) y es multiplataforma (Unix, Windows y Apple Mac Os X)".</p><p>&iquest;Para que sirve MATLAB&reg;?</p><p>Millones de ingenieros y cient&iacute;ficos de todo el mundo usan MATLAB&reg; para analizar y dise&ntilde;ar los sistemas y productos que transforman nuestro mundo. MATLAB&reg; est&aacute; presente en sistemas de seguridad activa de autom&oacute;viles, naves espaciales interplanetarias, dispositivos de monitorizaci&oacute;n de la salud, redes el&eacute;ctricas inteligentes y redes m&oacute;viles LTE. Se utiliza para aprendizaje autom&aacute;tico, procesamiento de se&ntilde;ales, procesamiento de im&aacute;genes, visi&oacute;n artificial, comunicaciones, finanzas computacionales, dise&ntilde;o de control, rob&oacute;tica y muchos otros campos.</p><p>&iquest;Cuando comenz&oacute; MATLAB&reg;?</p><p>MATLAB&reg; fue originalmente escrito por Cleve Moler, fundador de MathWorks Inc., con el objetivo de proporcionar un acceso f&aacute;cil al software matricial desarrollado en los proyectos de UNIX LINPACK y EISPACK. La primera versi&oacute;n de &eacute;ste software comenz&oacute; a finales de los a&ntilde;os 70 y se escribi&oacute; en FORTRAN.</p><p>&iquest;Hay algunas alternativas de MATLAB&reg;?</p><p>Hoy en d&iacute;a tenemos algunas alternativas para el uso de &eacute;ste software. Tenemos ,por ejemplo, a Octave, que es un sorftware muy parecido a MATLAB, sin embargo, &eacute;ste es un software libre. Aunque es muy parecido, tiene unas cuantas diferencias en cuanto a sintaxis se refiere</p><p>Puede conocer un poco m&aacute;s en los siguientes enlaces</p><p><a href="https://la.mathworks.com/help/matlab/learn_matlab/product-description.html">enlace 1</a></p><p><a href="https://www.ecured.cu/MATLAB#Historia">enlace 2</a></p><p><a href="https://octave-online.net/">Octave Online</a></p><h2 id="3">Desarrollo</h2><p>A continuaci&oacute;n, se presentan una serie de problemas de la Parte 1 del Curso de Se&ntilde;ales y Sistemas, los cuales se les da resoluci&oacute;n mediante c&oacute;digo de MATLAB&reg;.</p><h2 id="4">Problema 1</h2><div><ol><li>Crea una funci&oacute;n que se llame <i>fun1</i> y reciba dos parametros <img src="P3_eq08589834809570054062.png" alt="$\omega$" style="width:10px;height:7px;"> y <img src="P3_eq05508344529756732484.png" alt="$a$" style="width:7px;height:7px;"> la funci&oacute;n debe regresar la evaluaci&oacute;n <img src="P3_eq01407365636722940873.png" alt="$F(\omega)=a/(a^2+\omega^2)$" style="width:124px;height:17px;">, esta funci&oacute;n debe trabajar con <img src="P3_eq16064389548595522758.png" alt="$a\in R$" style="width:37px;height:11px;"> y <img src="P3_eq07809445175869582595.png" alt="$\omega\in  R^n$" style="width:45px;height:11px;">. Debe mostrar su c&oacute;digo en el reporte (sin ejecutar).</li></ol></div><pre class="language-matlab">syms <span class="string">a</span> <span class="string">w</span>;
+fun1 = @(a,w)a./(a.^2+w.^2); <span class="comment">%Declaracion de la funcion anonima</span>
+fun1(1,0:1:10);
+</pre><h2 id="5">Problema 2</h2><div><ol><li>Construya una funci&oacute;n que grafique funciones de <img src="P3_eq02145986785580767623.png" alt="$f:R\rightarrow R$" style="width:66px;height:14px;"> en el formato de su elecci&oacute;n y pruebe su c&oacute;digo mostrando la gr&aacute;fica de <img src="P3_eq04634431881849194213.png" alt="$F(\omega)$" style="width:31px;height:15px;"> vs <img src="P3_eq08589834809570054062.png" alt="$\omega$" style="width:10px;height:7px;"> en el intervalo <img src="P3_eq01169792831847459841.png" alt="$[-2,2]$" style="width:38px;height:15px;"> para <img src="P3_eq13016372792947090052.png" alt="$a=1$" style="width:34px;height:10px;">, no debe incluir el c&oacute;digo, solo el uso de la funci&oacute;n para mostrar la gr&aacute;fica</li></ol></div><pre class="codeinput">  a=1;
+  w=-2:0.01:2;
+
+  fun1 = @(a,w)a./(a.^2+w.^2);
+  FunPlot(w,fun1(a,w))
+
+<span class="comment">% La funci&oacute;n se encuentra en el apendice</span>
+</pre><img vspace="5" hspace="5" src="P3_01.png" alt=""> <h2 id="6">Problema 3</h2><p>Fue informado por nuestro profesor que este ejercicio no se resuelve.</p><h2 id="7">Problema 4</h2><p>Realiza las mismas operaciones que Lathi en las secciones M1.1 a M1.4 que se encuentra al final del cap&iacute;tulo 1 y antes de la secci&oacute;n de problemas, cambie los inline por funciones anonimas</p><p>Seccion M1.1</p><p>Cambiamos la funci&oacute;n inline por funci&oacute;n an&oacute;nima</p><pre class="codeinput">f = @(t)exp(-t).*cos(2*pi*t);
+t=0;
+f(t)
+<span class="comment">%%Observamos que es igual si evauluamos en w cuando es igual a 0 o en 0 directamente</span>
+f(0)
+t=(-2:2);
+f(t)
+<span class="comment">%%Podemos evaluar en un rango de n&uacute;meros, en este caso (-2,-1,0,1,2)</span>
+ figure()
+ plot(t,f(t));  <span class="comment">%%Graficando la funci&oacute;n evaluada en (-2:2)</span>
+ grid <span class="string">on</span>;
+ xlabel(<span class="string">'t'</span>);
+ ylabel(<span class="string">'f(t)'</span>);
+ title(<span class="string">'Gr&aacute;fica de f(t) = e^{-t}cos(2\pit) con t = (-2:2) '</span>)
+</pre><pre class="codeoutput">
+ans =
+
+     1
+
+
+ans =
+
+     1
+
+
+ans =
+
+    7.3891    2.7183    1.0000    0.3679    0.1353
+
+</pre><img vspace="5" hspace="5" src="P3_02.png" alt=""> <pre class="codeinput"> t= (-2:0.01:2); <span class="comment">%%Graficando la funci&oacute;n evaluada en 100 diferentes puntos</span>
+ <span class="comment">%para una mejor imagen de la gr&aacute;fica</span>
+ plot (t,f(t));
+ grid <span class="string">on</span>;
+  xlabel(<span class="string">'t'</span>);
+ ylabel(<span class="string">'f(t)'</span>);
+ title(<span class="string">'Gr&aacute;fica de f(t) = e^{-t}cos(2\pit) con t = (-2:0.01:2). '</span>)
+</pre><img vspace="5" hspace="5" src="P3_03.png" alt=""> <p>Como se puede observar, a&ntilde;adiendo mas valores donde la gr&aacute;fica puede ser evaluada, se obtiene la grafica real de la funci&oacute;n.</p><pre class="codeinput"><span class="comment">% Seccion M.1.2</span>
+<span class="comment">%</span>
+<span class="comment">% Cambiamos la funci&oacute;n inline por funci&oacute;n an&oacute;nima</span>
+
+u = @(t)t&gt;=0;
+t = (-2:2);
+figure()
+plot (t,u(t));
+grid <span class="string">on</span>;
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'u(t)'</span>);
+title(<span class="string">'Grafica de u(t) con t = (-2:2)'</span>)
+</pre><img vspace="5" hspace="5" src="P3_04.png" alt=""> <p>Como se observa en la gr&aacute;fica, no se obtiene la gr&aacute;fica real del escal&oacute;n unitario dado que se ingresaron muy pocos valores al momento de evaluar la funci&oacute;n</p><p>Secci&oacute;n M.1.3</p><p>Cambiamos la funci&oacute;n inline por funci&oacute;n an&oacute;nima</p><pre class="codeinput">t = (-2:0.01:2);
+plot (t,u(t));
+axis ([-2 2 -0.1 1.1]);
+grid <span class="string">on</span>;
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'u(t)'</span>);
+title(<span class="string">' Gr&aacute;fica de u(t) con t = (-2:0.01:2) '</span>)
+</pre><img vspace="5" hspace="5" src="P3_05.png" alt=""> <p>Una vez que se a&ntilde;aden los valores necesarios a evaluar, se obtiene la gr&aacute;fica correcta del escal&oacute;n unitario</p><p>Seccion M.1.4</p><p>Cambiamos la funci&oacute;n inline por funci&oacute;n an&oacute;nima</p><pre class="codeinput">p = @(t)(t&gt;=0) &amp; (t&lt;1);0
+t = (-1:0.01:2);
+plot(t,p(t));
+axis ([-1 2 -.1 1.1]);
+grid <span class="string">on</span>;
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'p(t) = u(t)-u(t-1)'</span>);
+title(<span class="string">'Grafica de  p(t) = u(t)-u(t-1). '</span>)
+</pre><pre class="codeoutput">
+ans =
+
+     0
+
+</pre><img vspace="5" hspace="5" src="P3_06.png" alt=""> <p>Asimismo, podemos obervar cual es la gr&aacute;fica resultante de hacer la resta de un escal&oacute;n unitario menos este mismo transladado a la derecha una unidad. p(t) = u(t)-u(t-1).</p><h2 id="16">Problema 5</h2><p>Resuelve el problema 1.2.2 usando las herramientas del paso anterior.</p><pre class="codeinput">f = @(t) (-t).*((t&gt;=-4)&amp;(t&lt;0))+ (t).*((t&gt;=0)&amp;(t&lt;2));
+t=(-10:.01:10);
+
+ plot(t,f(t))
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'x(t)'</span>);
+title(<span class="string">' Grafica original x(t) '</span>);
+grid <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="P3_07.png" alt=""> <p>Inciso A.</p><p>a. x(t-4)</p><pre class="codeinput"> plot(t,f(t-4))
+ xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'x1(t)'</span>);
+title(<span class="string">' Grafica Transladada x(t-4) '</span>);
+grid <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="P3_08.png" alt=""> <p>Se observa una nueva grafica transladada 4 unidades a la derecha de la original</p><p>Inciso B.</p><p>b. x(t/1.5)</p><pre class="codeinput">plot(t,f(t/1.5))
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'x2(t)'</span>);
+title(<span class="string">' Grafica expandida x(t/1.5) '</span>);
+grid <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="P3_09.png" alt=""> <p>Se observa una nueva grafica que se expande horizontalmente 1.5 unidades de la original</p><p>Inciso C</p><p>c. x(-t)</p><pre class="codeinput">plot(t,f(-t))
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'x3(t)'</span>);
+title(<span class="string">' Grafica invertida horizontalmente x(-t)) '</span>);
+grid <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="P3_10.png" alt=""> <p>Se observa una nueva grafica que fue invertida horizontalmente de la original</p><p>Inciso D</p><p>d. x(2t - 4)</p><pre class="codeinput">plot(t,f(2*t-4))
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'x4(t)'</span>);
+title(<span class="string">' Grafica comprimida y transladada x(2t-4) '</span>);
+grid <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="P3_11.png" alt=""> <p>Se observa una nueva grafica que fue comprimida 2 unidades horizontalmente y transladada 4 unidades a la derecha</p><p>Inciso E</p><p>e. x(2 - t)</p><pre class="codeinput">plot(t,f(2-t))
+xlabel(<span class="string">'t'</span>);
+ylabel(<span class="string">'x5(t)'</span>);
+title(<span class="string">' Grafica Transladada x(t/1.5) '</span>);
+grid <span class="string">on</span>;
+</pre><img vspace="5" hspace="5" src="P3_12.png" alt=""> <p>Se observa una nueva gr&aacute;fica que fu&eacute; invertida horizontamente y transladada 2 unidades a la izquierda</p><h2 id="27">Problema 6</h2><p>Escriba una funci&oacute;n que se llame energia que reciba como argumento una funci&oacute;n (an&oacute;nima o simb&oacute;lica) y que regrese el c&aacute;lculo de la energ&iacute;a, para esto puede resultar &uacute;til investigar las instrucciones int , integral Se presupone utilizar el c&oacute;digo solo con funciones de energia. Muestre el c&oacute;digo sin ejecutar, y posteriormente resuelva el problema 1.1.3</p><p>La funcion que se realiz&oacute; fu&eacute; la siguiente:</p><pre class="language-matlab"><span class="keyword">function</span> [Ener] = Energia (f,a,b)
+syms <span class="string">t</span>
+sqr = @(x) x.^2;
+Ener = int(sqr(f),t,a,b);
+<span class="keyword">end</span>
+</pre><p>En donde se le pasan tres parametros, donde:</p><div><ul><li>f: Es la funcion a evaluar para obtener la energia</li><li>a y b: Son los limites de la integral, lo que se hace es obtener un intervalo, en donde en ese intervalo lo que sucede es que se evalua la funcion, o en dado caso es de menos infinito a infinito.</li></ul></div><p>Encuentre las energ&iacute;as del par de se&ntilde;ales x(t) e y(t) representadas en las figuras P1.1-3a y P1.1-3b. Dibuje y encuentre las energ&iacute;as de las se&ntilde;ales x(t)+y(t) y x(t)-y(t).</p><p>En el siguiente c&oacute;digo procedemos a graficar las se&ntilde;ales que a las cuales se nos solicita obtener su energ&iacute;a, asi como la obtencion de la energia. Ademas el c&oacute;digo esta comentado en la obtencion de energias para saber cual es la energia para cada funci&oacute;n, y de igual manera se comenta que gr&aacute;ficas son las que se estan graficando.</p><p>Ejercicio Fig P1.1-3a</p><pre class="codeinput">syms <span class="string">t</span>
+y1=@(x)1*((x&gt;0)&amp;(x&lt;=2));
+y2=@(x)(1.*((x&gt;0)&amp;(x&lt;1))-1.*((x&gt;1)&amp;(x&lt;=2)));
+
+x=-1:0.004:3;
+
+<span class="comment">%Gr&aacute;fica y1(x)</span>
+figure;
+subplot(1,2,1);
+plot(x,y1(x),<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 3 -2 2]);
+title(<span class="string">'y1(x)'</span>)
+<span class="comment">%Energ&iacute;a y1(x)</span>
+E1=Energia(1,0,2)
+
+<span class="comment">%Gr&aacute;fica y2(x)</span>
+subplot(1,2,2);
+plot(x,y2(x),<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 3 -2 2]);
+title(<span class="string">'y2(x)'</span>);
+<span class="comment">%Energia y2(x)</span>
+E2=Energia(1,0,1)+Energia(-1,1,2)
+
+<span class="comment">%Grafica y1(x)+y2(x)</span>
+y=y1(x)+y2(x);
+figure;
+subplot(2,1,1);
+plot(x,y,<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 3 -1 3]);
+title(<span class="string">'y=y1(x)+y2(x)'</span>);
+<span class="comment">%Energ&iacute;a y1(x)+y2(x)</span>
+E3=Energia(2,0,1)
+
+<span class="comment">%Gr&aacute;fica y1(x)-y2(x)</span>
+y=y1(x)-y2(x);
+subplot(2,1,2);
+plot(x,y,<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 3 -1 3]);
+title(<span class="string">'y=y1(x)-y2(x)'</span>);
+<span class="comment">%Energia y1(x)-y2(x)</span>
+E4=Energia(2,1,2)
+</pre><pre class="codeoutput"> 
+E1 =
+ 
+2
+ 
+ 
+E2 =
+ 
+2
+ 
+ 
+E3 =
+ 
+4
+ 
+ 
+E4 =
+ 
+4
+ 
+</pre><img vspace="5" hspace="5" src="P3_13.png" alt=""> <img vspace="5" hspace="5" src="P3_14.png" alt=""> <p>Ejercicio Fig P1.1-3b</p><pre class="codeinput">y1=@(x)sin(x).*((x&gt;0)&amp;(x&lt;=2*pi));
+y2=@(x)1*((x&gt;0)&amp;(x&lt;=2*pi));
+
+x=-1:0.004:3*pi;
+
+<span class="comment">%Grafica y1(x)</span>
+figure;
+subplot(1,2,1);
+plot(x,y1(x),<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 3*pi -2 2]);
+title(<span class="string">'y1(x)'</span>)
+<span class="comment">%Energia y1(x)</span>
+E1=Energia(sin(t),0,2*pi)
+
+
+<span class="comment">%Grafica y2(x)</span>
+subplot(1,2,2);
+plot(x,y2(x),<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 3*pi -2 2]);
+title(<span class="string">'y2(x)'</span>);
+<span class="comment">%Energia y2(x)</span>
+E2=Energia(1,0,2*pi)
+
+<span class="comment">%Grafica y1(x)+y2(x)</span>
+y=y1(x)+y2(x);
+figure;
+subplot(2,1,1);
+plot(x,y,<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 3*pi -3 3]);
+title(<span class="string">'y=y1(x)+y2(x)'</span>);
+<span class="comment">%Energia y1(x)+y2(x)</span>
+E3=Energia(sin(t)+1,0,2*pi)
+
+<span class="comment">%Grafica y1(x)-y2(x)</span>
+y=y1(x)-y2(x);
+subplot(2,1,2);
+plot(x,y,<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 3*pi -3 3]);
+title(<span class="string">'y=y1(x)-y2(x)'</span>);
+<span class="comment">%Energia y1(x)-y2(x)</span>
+E4=Energia(sin(t)-1,0,2*pi)
+</pre><pre class="codeoutput"> 
+E1 =
+ 
+pi
+ 
+ 
+E2 =
+ 
+2*pi
+ 
+ 
+E3 =
+ 
+3*pi
+ 
+ 
+E4 =
+ 
+3*pi
+ 
+</pre><img vspace="5" hspace="5" src="P3_15.png" alt=""> <img vspace="5" hspace="5" src="P3_16.png" alt=""> <p>Podemos observar que en las gr&aacute;ficas que estan compuestas por una suma de dos gr&aacute;ficas su energ&iacute;a es la suma de las energ&iacute;as de cada gr&aacute;fica por separado, ahora vamos a probar si esto es valida para el tercer ejercicio.</p><p>Ejercicio Fig P1.1-3c</p><pre class="codeinput">y1=@(x)sin(x).*((x&gt;0)&amp;(x&lt;=pi));
+y2=@(x)1*((x&gt;0)&amp;(x&lt;=pi));
+
+x=-1:0.004:3*pi;
+
+<span class="comment">%Grafica y1(x)</span>
+figure;
+subplot(1,2,1);
+plot(x,y1(x),<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 5 -2 2]);
+title(<span class="string">'y1(x)'</span>)
+<span class="comment">%Energia y1(x)</span>
+E1=Energia(sin(t),0,pi)
+
+
+<span class="comment">%Grafica y2(x)</span>
+subplot(1,2,2);
+plot(x,y2(x),<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 5 -2 2]);
+title(<span class="string">'y2(x)'</span>);
+<span class="comment">%Energia y2(x)</span>
+E2=Energia(1,0,pi)
+
+<span class="comment">%Grafica y1(x)+y2(x)</span>
+y=y1(x)+y2(x);
+figure;
+subplot(2,1,1);
+plot(x,y,<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 5 -3 3]);
+title(<span class="string">'y=y1(x)+y2(x)'</span>);
+<span class="comment">%Energia y1(x)+y2(x)</span>
+E3=Energia(sin(t)+1,0,pi)
+
+<span class="comment">%Grafica y1(x)-y2(x)</span>
+y=y1(x)-y2(x);
+subplot(2,1,2);
+plot(x,y,<span class="string">'-'</span>);
+grid <span class="string">on</span>;
+axis([-1, 5 -3 3]);
+title(<span class="string">'y=y1(x)-y2(x)'</span>);
+<span class="comment">%Energia y1(x)-y2(x)</span>
+E4=Energia(sin(t)-1,0,pi)
+</pre><pre class="codeoutput"> 
+E1 =
+ 
+pi/2
+ 
+ 
+E2 =
+ 
+pi
+ 
+ 
+E3 =
+ 
+(3*pi)/2 + 4
+ 
+ 
+E4 =
+ 
+(3*pi)/2 - 4
+ 
+</pre><img vspace="5" hspace="5" src="P3_17.png" alt=""> <img vspace="5" hspace="5" src="P3_18.png" alt=""> <p>Ahora podemos notar que la observacion que notamos para los ejercicios anteriores no se cumpli&oacute; como hab&iacute;amos supuesto para los ejercicios anteriores.</p><h2 id="34">Problema 7</h2><div><ol><li>Escriba una funci&oacute;n que se llame <i>potencia</i> que reciba como argumento una funci&oacute;n (anonima o simbolica) y que regrese el calculo de la potencia para esto puede resultar &uacute;til investigar las instrucciones <i>int</i> , <i>integral</i> Se presupone utilizar el c&oacute;digo solo con funciones de potencia. Muestre el c&oacute;digo sin ejecutar, y posteriormente resuelva el problema 1.1.4</li></ol></div><p>La funci&oacute;n que se realiz&oacute; fue la siguiente:</p><pre class="codeinput"><span class="comment">% Funcion con Periodo 4</span>
+syms <span class="string">t</span> <span class="string">T</span> <span class="string">c</span>
+p1 = Potencia(t.^3,4) <span class="comment">%Potencia de la se&ntilde;al original</span>
+rms1 = p1.^(1/2) <span class="comment">%Valor Rms de la se&ntilde;al original</span>
+<span class="comment">% Encuentre la Potencia de la se&ntilde;al periodica x(t) = t^{3} y de sus</span>
+<span class="comment">% transorfamaciones, as&iacute; como su valor rms</span>
+
+<span class="comment">% Inciso A -x(t)</span>
+p2 = Potencia((-1)*t.^3,4) <span class="comment">%Potencia</span>
+rms2 = p2.^(1/2) <span class="comment">%Valor Rms</span>
+
+<span class="comment">% Inciso B  2x(t)</span>
+p3 = Potencia((2)*t.^3,4)
+rms3 = p3.^(1/2) <span class="comment">%Valor Rms</span>
+<span class="comment">% Inciso C cx(t)</span>
+p4 = Potencia(c*t.^3,4)
+rms4 = p4.^(1/2) <span class="comment">%Valor Rms</span>
+<span class="comment">% Definici&oacute;n de la Funci&oacute;n del C&aacute;lculo de la Potencia</span>
+</pre><pre class="codeoutput"> 
+p1 =
+ 
+64/7
+ 
+ 
+rms1 =
+ 
+(8*7^(1/2))/7
+ 
+ 
+p2 =
+ 
+64/7
+ 
+ 
+rms2 =
+ 
+(8*7^(1/2))/7
+ 
+ 
+p3 =
+ 
+256/7
+ 
+ 
+rms3 =
+ 
+(16*7^(1/2))/7
+ 
+ 
+p4 =
+ 
+(64*c^2)/7
+ 
+ 
+rms4 =
+ 
+((64*c^2)/7)^(1/2)
+ 
+</pre><h2 id="35">Ap&eacute;ndice</h2><pre class="codeinput"><span class="comment">%Funcion Problema 2:</span>
+<span class="keyword">function</span> [] = FunPlot (w,funcion)
+  plot(w,funcion)
+  title(<span class="string">'Gr&aacute;fica de funci&oacute;n f(w)'</span>);
+  grid <span class="string">on</span>;
+<span class="keyword">end</span>
+
+<span class="comment">%Funci&oacute;n de Energ&iacute;a Problema 6:</span>
+<span class="keyword">function</span> [Ener] = Energia (f,a,b)
+syms <span class="string">t</span>
+sqr = @(x) x.^2;
+Ener = int(sqr(f),t,a,b);
+<span class="keyword">end</span>
+
+<span class="comment">%Funci&oacute;n de Potencia Problema 7:</span>
+<span class="keyword">function</span> [Poten] = Potencia (f,T)
+syms <span class="string">t</span>
+sqr = @(x) x.^2;
+Poten =(1/T)*int(sqr(f),t,-T/2,T/2);
+<span class="keyword">end</span>
+</pre><h2 id="36">Referencias</h2><div><ul><li>Ange Frado Garcia. (2016). Integracion numerica con Matlab. 23/09/2019, de EHU. Curso interactivo de f&iacute;sica por internet Sitio web: <a href="http://www.sc.ehu.es/sbweb/fisica3/numerico/integral/integral_1.html">http://www.sc.ehu.es/sbweb/fisica3/numerico/integral/integral_1.html</a></li></ul></div><div><ul><li>Javier Vicente Saez. (2006). Matlab-Funcion a trozos . 23/09/2019, de La web del programador Sitio web: <a href="http://www.lawebdelprogramador.com/foros/Matlab/631528-funcion-a-trozos.html">http://www.lawebdelprogramador.com/foros/Matlab/631528-funcion-a-trozos.html</a></li></ul></div><div><ul><li>MATHWORKS. Funciones anonimas. 23/09/2019, de MATHWORKS Sitio web: <a href="http://la.mathworks.com/help/matlab/matlab_prog/anonymous-functions.html">http://la.mathworks.com/help/matlab/matlab_prog/anonymous-functions.html</a></li></ul></div><div><ul><li>MATHWORKS. Integraci&oacute;n num&eacute;rica . 23/09/2019, de MATHWORKS Sitio web: <a href="http://la.mathworks.com/help/matlab/ref/integral.html">http://la.mathworks.com/help/matlab/ref/integral.html</a></li></ul></div><div><ul><li>MATHWORKS. Grafico de Lineas 2D. 23/09/2019, de MATHWORKS Sitio web: <a href="http://la.mathworks.com/help/matlab/ref/plot.html">http://la.mathworks.com/help/matlab/ref/plot.html</a></li></ul></div><div><ul><li>Rafael Martinez Martinez. P03SyS20201. 23/09/2019, de Github Sitio web <a href="http://rafneta.github.io/PracticasSyS/20201/P03SyS20201/P03SyS20201.html">http://rafneta.github.io/PracticasSyS/20201/P03SyS20201/P03SyS20201.html</a></li></ul></div><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Práctica 3: Señales continuas
+% * Cruz Meneses Jorge Angel
+% * González Jiménez Daniel
+% * Lazcano Saavedra Miguel Salomón
+% * Rivera Ortiz Raúl Alejandro
+%% Objetivos
+%
+% * Manipulación básica de MATLAB®
+% * Gráficas de señales reales y complejas continuas 
+% * Transformación de señales continuas (escalamientos y traslaciones)
+% * Cálculo de energía y potencia de señales continuas
+
+%% Introducción
+%
+% ¿Que es MATLAB®?
+%
+% Matlab es un "Software matemático con entorno de desarrollo integrado (IDE) que tiene un lenguaje de programación propio (Lenguaje M) y es multiplataforma (Unix, Windows y Apple Mac Os X)". 
+% 
+% ¿Para que sirve MATLAB®?
+%
+% Millones de ingenieros y científicos de todo el mundo usan MATLAB® para analizar y diseñar los sistemas y productos que transforman nuestro mundo. MATLAB® está presente en sistemas de seguridad activa de automóviles, naves espaciales interplanetarias, dispositivos de monitorización de la salud, redes eléctricas inteligentes y redes móviles LTE. Se utiliza para aprendizaje automático, procesamiento de señales, procesamiento de imágenes, visión artificial, comunicaciones, finanzas computacionales, diseño de control, robótica y muchos otros campos.
+%
+% ¿Cuando comenzó MATLAB®?
+%
+% MATLAB® fue originalmente escrito por Cleve Moler, fundador de MathWorks Inc.,
+% con el objetivo de proporcionar un acceso fácil al software matricial desarrollado en los
+% proyectos de UNIX LINPACK y EISPACK. La primera versión de éste software
+% comenzó a finales de los años 70 y se escribió en FORTRAN. 
+%
+% ¿Hay algunas alternativas de MATLAB®?
+%
+% Hoy en día tenemos algunas alternativas para el uso de éste software. 
+% Tenemos ,por ejemplo, a Octave, que es un sorftware muy parecido a
+% MATLAB, sin embargo, éste es un software libre. 
+% Aunque es muy parecido, tiene unas cuantas diferencias en cuanto a
+% sintaxis se refiere
+%
+% Puede conocer un poco más en los siguientes enlaces
+%
+% <https://la.mathworks.com/help/matlab/learn_matlab/product-description.html enlace 1>
+%
+% <https://www.ecured.cu/MATLAB#Historia enlace 2>
+% 
+% <https://octave-online.net/ Octave Online>
+
+%% Desarrollo
+%
+% A continuación, se presentan una serie de problemas de la Parte 1 del
+% Curso de Señales y Sistemas, los cuales se les da resolución mediante
+% código de MATLAB®. 
+%
+%% Problema 1
+% # Crea una función que se llame _fun1_ y reciba dos parametros $\omega$ y 
+% $a$ la función debe regresar la evaluación $F(\omega)=a/(a^2+\omega^2)$,
+% esta función debe trabajar con $a\in R$ y $\omega\in  R^n$. Debe
+% mostrar su código en el reporte (sin ejecutar).
+% 
+%   syms a w;
+%   fun1 = @(a,w)a./(a.^2+w.^2); %Declaracion de la funcion anonima 
+%   fun1(1,0:1:10);
+
+
+%% Problema 2
+%
+% # Construya una función que grafique funciones de
+% $f:R\rightarrow R$ en el formato de su elección y pruebe
+% su código mostrando la gráfica de $F(\omega)$ vs $\omega$ en el intervalo
+% $[-2,2]$ para $a=1$, no debe
+% incluir el código, solo el uso de la función para mostrar la gráfica
+
+  a=1;
+  w=-2:0.01:2;
+
+  fun1 = @(a,w)a./(a.^2+w.^2); 
+  FunPlot(w,fun1(a,w))
+
+% La función se encuentra en el apendice
+
+%% Problema 3
+%
+% Fue informado por nuestro profesor que este ejercicio no se resuelve.
+%
+%% Problema 4
+% Realiza las mismas operaciones que Lathi en las secciones M1.1 a M1.4 
+% que se encuentra al final del capítulo 1 y antes de la sección de 
+% problemas, cambie los inline por funciones anonimas
+%
+% Seccion M1.1
+%
+% Cambiamos la función inline por función anónima 
+
+f = @(t)exp(-t).*cos(2*pi*t);
+t=0;
+f(t) 
+%%Observamos que es igual si evauluamos en w cuando es igual a 0 o en 0 directamente 
+f(0)
+t=(-2:2);
+f(t) 
+%%Podemos evaluar en un rango de números, en este caso (-2,-1,0,1,2)
+ figure()
+ plot(t,f(t));  %%Graficando la función evaluada en (-2:2)
+ grid on;
+ xlabel('t');
+ ylabel('f(t)'); 
+ title('Gráfica de f(t) = e^{-t}cos(2\pit) con t = (-2:2) ')
+ %%
+ t= (-2:0.01:2); %%Graficando la función evaluada en 100 diferentes puntos 
+ %para una mejor imagen de la gráfica 
+ plot (t,f(t)); 
+ grid on;
+  xlabel('t'); 
+ ylabel('f(t)');
+ title('Gráfica de f(t) = e^{-t}cos(2\pit) con t = (-2:0.01:2). ')
+ %%
+ % Como se puede observar, añadiendo mas valores donde la gráfica puede ser
+ % evaluada, se obtiene la grafica real de la función. 
+ 
+ %%
+ 
+% Seccion M.1.2
+%
+% Cambiamos la función inline por función anónima
+
+u = @(t)t>=0;
+t = (-2:2);
+figure()
+plot (t,u(t));
+grid on;
+xlabel('t');
+ylabel('u(t)');
+title('Grafica de u(t) con t = (-2:2)')
+%%
+% Como se observa en la gráfica, no se obtiene la gráfica real del escalón
+% unitario dado que se ingresaron muy pocos valores al momento de evaluar la
+% función  
+
+%%
+% Sección M.1.3
+%
+% Cambiamos la función inline por función anónima
+t = (-2:0.01:2); 
+plot (t,u(t)); 
+axis ([-2 2 -0.1 1.1]);
+grid on;
+xlabel('t'); 
+ylabel('u(t)');
+title(' Gráfica de u(t) con t = (-2:0.01:2) ')
+%%
+% Una vez que se añaden los valores necesarios a evaluar, se obtiene la
+% gráfica correcta del escalón unitario
+%%
+% Seccion M.1.4
+%
+% Cambiamos la función inline por función anónima
+p = @(t)(t>=0) & (t<1);0
+t = (-1:0.01:2); 
+plot(t,p(t));
+axis ([-1 2 -.1 1.1]);
+grid on;
+xlabel('t');
+ylabel('p(t) = u(t)-u(t-1)');
+title('Grafica de  p(t) = u(t)-u(t-1). ')
+%%
+% Asimismo, podemos obervar cual es la gráfica resultante de hacer la
+% resta de un escalón unitario menos este mismo transladado a la derecha
+% una unidad. p(t) = u(t)-u(t-1).
+%% Problema 5
+% Resuelve el problema 1.2.2 usando las herramientas del paso anterior.
+%
+f = @(t) (-t).*((t>=-4)&(t<0))+ (t).*((t>=0)&(t<2));
+t=(-10:.01:10);
+
+ plot(t,f(t))
+xlabel('t'); 
+ylabel('x(t)');
+title(' Grafica original x(t) ');
+grid on;
+%%
+% Inciso A.
+%
+% a. x(t-4)   
+ plot(t,f(t-4))
+ xlabel('t'); 
+ylabel('x1(t)');
+title(' Grafica Transladada x(t-4) ');
+grid on;
+%%
+% Se observa una nueva grafica transladada 4 unidades a la derecha de la
+% original 
+
+%%
+% Inciso B.
+%
+% b. x(t/1.5)
+plot(t,f(t/1.5))
+xlabel('t'); 
+ylabel('x2(t)');
+title(' Grafica expandida x(t/1.5) ');
+grid on;
+%%
+% Se observa una nueva grafica que se expande horizontalmente 1.5 unidades
+% de la original 
+%%
+% Inciso C
+%
+% c. x(-t)
+plot(t,f(-t))
+xlabel('t'); 
+ylabel('x3(t)');
+title(' Grafica invertida horizontalmente x(-t)) ');
+grid on;
+%%
+% Se observa una nueva grafica que fue invertida horizontalmente de la
+% original
+%%
+% Inciso D
+%
+% d. x(2t - 4)
+plot(t,f(2*t-4))
+xlabel('t'); 
+ylabel('x4(t)');
+title(' Grafica comprimida y transladada x(2t-4) ');
+grid on;
+%%
+% Se observa una nueva grafica que fue comprimida 2 unidades
+% horizontalmente y transladada 4 unidades a la derecha 
+
+%%
+% Inciso E
+%
+% e. x(2 - t)
+plot(t,f(2-t))
+xlabel('t'); 
+ylabel('x5(t)');
+title(' Grafica Transladada x(t/1.5) ');
+grid on;
+%%
+% Se observa una nueva gráfica que fué invertida horizontamente y
+% transladada 2 unidades a la izquierda
+
+%% Problema 6
+% Escriba una función que se llame energia que reciba como argumento una 
+% función (anónima o simbólica) y que regrese el cálculo de la energía, 
+% para esto puede resultar útil investigar las instrucciones int , integral
+% Se presupone utilizar el código solo con funciones de energia. Muestre el
+% código sin ejecutar, y posteriormente resuelva el problema 1.1.3
+%
+% La funcion que se realizó fué la siguiente:
+%
+%   function [Ener] = Energia (f,a,b)
+%   syms t
+%   sqr = @(x) x.^2;
+%   Ener = int(sqr(f),t,a,b);
+%   end
+%
+% En donde se le pasan tres parametros, donde:
+%
+% * f: Es la funcion a evaluar para obtener la energia
+% * a y b: Son los limites de la integral, lo que se hace es obtener un
+% intervalo, en donde en ese intervalo lo que sucede es que se evalua la
+% funcion, o en dado caso es de menos infinito a infinito.
+%
+% Encuentre las energías del par de señales x(t) e y(t) representadas en las figuras P1.1-3a y P1.1-3b. Dibuje y encuentre las energías de las señales 
+% x(t)+y(t) y x(t)-y(t).
+%
+% En el siguiente código procedemos a graficar las señales que a las
+% cuales se nos solicita obtener su energía, asi como la obtencion de la
+% energia. Ademas el código esta comentado en la obtencion de energias para
+% saber cual es la energia para cada función, y de igual manera se comenta
+% que gráficas son las que se estan graficando.
+%
+% Ejercicio Fig P1.1-3a
+%%
+syms t
+y1=@(x)1*((x>0)&(x<=2));
+y2=@(x)(1.*((x>0)&(x<1))-1.*((x>1)&(x<=2)));
+
+x=-1:0.004:3;
+
+%Gráfica y1(x)
+figure;
+subplot(1,2,1);
+plot(x,y1(x),'-');
+grid on;
+axis([-1, 3 -2 2]);
+title('y1(x)')
+%Energía y1(x)
+E1=Energia(1,0,2)
+
+%Gráfica y2(x)
+subplot(1,2,2);
+plot(x,y2(x),'-');
+grid on;
+axis([-1, 3 -2 2]);
+title('y2(x)');
+%Energia y2(x)
+E2=Energia(1,0,1)+Energia(-1,1,2)
+
+%Grafica y1(x)+y2(x)
+y=y1(x)+y2(x);
+figure;
+subplot(2,1,1);
+plot(x,y,'-');
+grid on;
+axis([-1, 3 -1 3]);
+title('y=y1(x)+y2(x)');
+%Energía y1(x)+y2(x)
+E3=Energia(2,0,1)
+
+%Gráfica y1(x)-y2(x)
+y=y1(x)-y2(x);
+subplot(2,1,2);
+plot(x,y,'-');
+grid on;
+axis([-1, 3 -1 3]);
+title('y=y1(x)-y2(x)');
+%Energia y1(x)-y2(x)
+E4=Energia(2,1,2)
+
+
+%%
+% Ejercicio Fig P1.1-3b
+%%
+y1=@(x)sin(x).*((x>0)&(x<=2*pi));
+y2=@(x)1*((x>0)&(x<=2*pi));
+
+x=-1:0.004:3*pi;
+
+%Grafica y1(x)
+figure;
+subplot(1,2,1);
+plot(x,y1(x),'-');
+grid on;
+axis([-1, 3*pi -2 2]);
+title('y1(x)')
+%Energia y1(x)
+E1=Energia(sin(t),0,2*pi)
+
+
+%Grafica y2(x)
+subplot(1,2,2);
+plot(x,y2(x),'-');
+grid on;
+axis([-1, 3*pi -2 2]);
+title('y2(x)');
+%Energia y2(x)
+E2=Energia(1,0,2*pi)
+
+%Grafica y1(x)+y2(x)
+y=y1(x)+y2(x);
+figure;
+subplot(2,1,1);
+plot(x,y,'-');
+grid on;
+axis([-1, 3*pi -3 3]);
+title('y=y1(x)+y2(x)');
+%Energia y1(x)+y2(x)
+E3=Energia(sin(t)+1,0,2*pi)
+
+%Grafica y1(x)-y2(x)
+y=y1(x)-y2(x);
+subplot(2,1,2);
+plot(x,y,'-');
+grid on;
+axis([-1, 3*pi -3 3]);
+title('y=y1(x)-y2(x)');
+%Energia y1(x)-y2(x)
+E4=Energia(sin(t)-1,0,2*pi)
+%%
+% Podemos observar que en las gráficas que estan compuestas por una suma de
+% dos gráficas su energía es la suma de las energías de cada gráfica por
+% separado, ahora vamos a probar si esto es valida para el tercer
+% ejercicio.
+%
+% Ejercicio Fig P1.1-3c
+%%
+y1=@(x)sin(x).*((x>0)&(x<=pi));
+y2=@(x)1*((x>0)&(x<=pi));
+
+x=-1:0.004:3*pi;
+
+%Grafica y1(x)
+figure;
+subplot(1,2,1);
+plot(x,y1(x),'-');
+grid on;
+axis([-1, 5 -2 2]);
+title('y1(x)')
+%Energia y1(x)
+E1=Energia(sin(t),0,pi)
+
+
+%Grafica y2(x)
+subplot(1,2,2);
+plot(x,y2(x),'-');
+grid on;
+axis([-1, 5 -2 2]);
+title('y2(x)');
+%Energia y2(x)
+E2=Energia(1,0,pi)
+
+%Grafica y1(x)+y2(x)
+y=y1(x)+y2(x);
+figure;
+subplot(2,1,1);
+plot(x,y,'-');
+grid on;
+axis([-1, 5 -3 3]);
+title('y=y1(x)+y2(x)');
+%Energia y1(x)+y2(x)
+E3=Energia(sin(t)+1,0,pi)
+
+%Grafica y1(x)-y2(x)
+y=y1(x)-y2(x);
+subplot(2,1,2);
+plot(x,y,'-');
+grid on;
+axis([-1, 5 -3 3]);
+title('y=y1(x)-y2(x)');
+%Energia y1(x)-y2(x)
+E4=Energia(sin(t)-1,0,pi)
+
+
+%%
+% Ahora podemos notar que la observacion que notamos para los ejercicios
+% anteriores no se cumplió como habíamos supuesto para los ejercicios
+% anteriores.
+%% Problema 7
+%
+% # Escriba una función que se llame _potencia_ que reciba como argumento
+% una función (anonima o simbolica) y que regrese el calculo de la potencia
+% para esto puede resultar útil investigar las instrucciones _int_ , _integral_
+% Se presupone utilizar el código solo con funciones de potencia. Muestre
+% el código sin ejecutar, y posteriormente resuelva el problema 1.1.4
+% 
+% La función que se realizó fue la siguiente: 
+%
+
+% Funcion con Periodo 4
+syms t T c
+p1 = Potencia(t.^3,4) %Potencia de la señal original
+rms1 = p1.^(1/2) %Valor Rms de la señal original
+% Encuentre la Potencia de la señal periodica x(t) = t^{3} y de sus
+% transorfamaciones, así como su valor rms
+
+% Inciso A -x(t)
+p2 = Potencia((-1)*t.^3,4) %Potencia 
+rms2 = p2.^(1/2) %Valor Rms
+
+% Inciso B  2x(t)
+p3 = Potencia((2)*t.^3,4)
+rms3 = p3.^(1/2) %Valor Rms
+% Inciso C cx(t)
+p4 = Potencia(c*t.^3,4)
+rms4 = p4.^(1/2) %Valor Rms
+% Definición de la Función del Cálculo de la Potencia
+
+
+%% Apéndice 
+%Funcion Problema 2:
+function [] = FunPlot (w,funcion)
+  plot(w,funcion)
+  title('Gráfica de función f(w)');
+  grid on;
+end
+
+%Función de Energía Problema 6:
+function [Ener] = Energia (f,a,b)
+syms t
+sqr = @(x) x.^2;
+Ener = int(sqr(f),t,a,b);
+end
+
+%Función de Potencia Problema 7:
+function [Poten] = Potencia (f,T)
+syms t 
+sqr = @(x) x.^2;
+Poten =(1/T)*int(sqr(f),t,-T/2,T/2);
+end
+
+%% Referencias
+%
+%
+% * Ange Frado Garcia. (2016). Integracion numerica con Matlab. 23/09/2019,
+% de EHU. Curso interactivo de física por internet Sitio web: 
+% http://www.sc.ehu.es/sbweb/fisica3/numerico/integral/integral_1.html
+%
+%
+% * Javier Vicente Saez. (2006). Matlab-Funcion a trozos . 23/09/2019,
+% de La web del programador Sitio web: 
+% http://www.lawebdelprogramador.com/foros/Matlab/631528-funcion-a-trozos.html
+%
+%
+% * MATHWORKS. Funciones anonimas. 23/09/2019, de MATHWORKS Sitio web:
+% http://la.mathworks.com/help/matlab/matlab_prog/anonymous-functions.html
+%
+%
+% * MATHWORKS. Integración numérica . 23/09/2019, de MATHWORKS Sitio web:
+% http://la.mathworks.com/help/matlab/ref/integral.html
+%
+%
+% * MATHWORKS. Grafico de Lineas 2D. 23/09/2019, de MATHWORKS Sitio web: 
+% http://la.mathworks.com/help/matlab/ref/plot.html
+%
+%
+% * Rafael Martinez Martinez. P03SyS20201. 23/09/2019, de Github Sitio
+% web
+% http://rafneta.github.io/PracticasSyS/20201/P03SyS20201/P03SyS20201.html
+
+##### SOURCE END #####
+--></body></html>
